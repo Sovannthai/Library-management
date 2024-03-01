@@ -18,7 +18,7 @@
 		<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 	<li class="nav-item">
 		<a class="nav-link @(ViewContext.RouteData.Values["Controller"].ToString() == "Home" && ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")" asp-controller="Home" asp-action="Index">
-			<i class="nav-icon fas fa-th"></i>
+			<i class="nav-icon fas fa-tachometer-alt"></i>
 			<p>
 				Dashboard
 			</p>
@@ -26,29 +26,23 @@
 	</li>
 	<li class="nav-item menu-open">
 		<a class="nav-link">
-			<i class="nav-icon fas fa-tachometer-alt"></i>
+			<i class="nav-icon fas fa-users"></i>
 			<p>
-				Employee Management
+				Customer
 				<i class="right fas fa-angle-left"></i>
 			</p>
 		</a>
 		<ul class="nav nav-treeview">
 			<li class="nav-item">
-				<a class="nav-link @(ViewContext.RouteData.Values["Controller"].ToString() == "Employees" && ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")" asp-controller="Employees" asp-action="Index">
-					<i class="far fa-circle nav-icon d-none"></i>
-					<p class="ml-4">Employee</p>
+				<a class="nav-link @(ViewContext.RouteData.Values["Controller"].ToString() == "Customers" && ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")" asp-controller="Customers" asp-action="Index">
+					<i class="fas fa-user nav-icon d-none"></i>
+					<p class="ml-4">Customer List</p>
 				</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link @(ViewContext.RouteData.Values["Controller"].ToString() == "Books" && ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")" asp-controller="Books" asp-action="Index">
+				<a class="nav-link @(ViewContext.RouteData.Values["Controller"].ToString() == "CustomerTypes" && ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")" asp-controller="CustomerTypes" asp-action="Index">
 					<i class="far fa-circle nav-icon d-none"></i>
-					<p class="ml-4">Book</p>
-				</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link @(ViewContext.RouteData.Values["Controller"].ToString() == "Authors" && ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")" asp-controller="Authors" asp-action="Index">
-					<i class="far fa-circle nav-icon d-none"></i>
-					<p class="ml-4">Author</p>
+					<p class="ml-4">Customer Type</p>
 				</a>
 			</li>
 		</ul>

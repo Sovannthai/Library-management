@@ -1,0 +1,93 @@
+﻿@using X.PagedList.Mvc.Core;
+@using X.PagedList.Web.Common;
+@model X.PagedList.IPagedList<Library.Models.CustomerType>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/AdminLTE/_Layout.cshtml";
+}
+<style>
+    thead{
+         background-color: #66B132;
+    }
+    .btn-edit{
+        background-color: #66B132;
+        border-radius: 100px;
+    }
+    .delete-btn{
+         border-radius: 100px;
+    }
+</style>
+<div class="row">
+    <div class="col-sm-6">
+        <h2>Customer Type</h2> 
+    </div>
+    <div class="col-sm-6 ">
+        <a asp-action="Create" class="btn btn-primary btn-sm float-right"><i class="fas fa-plus"> Add New</i></a>
+    </div>
+</div>
+    
+<div class="card">
+    <div class="card-body">
+    <table class="table table-bordered table-hover">
+        <thead class="text-uppercase">
+            <tr>
+                <th class="text-white">Name</th>
+                <th class="text-white">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                            <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-outline-primary btn-sm btn-edit"><i class="fas fa-edit text-white"></i></a>
+                    <form asp-action="Delete" asp-route-id="@item.Id" class="d-inline-block delete-form">
+                         <button type="submit" class="btn btn-danger btn-sm delete-btn"><i class="fas fa-trash"></i></button>
+                    </form>
+    </td>
+                    </tr>
+            }
+        </tbody>
+    </table>
+<div class="row">
+    <div class="col">
+        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+    </div>
+    <div class="col">
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page }), new PagedListRenderOptions { Display = PagedListDisplayMode.IfNeeded })
+    </div>
+</div>
+    </div>
+</div>
+<script>
+    // Function to handle form submission with SweetAlert
+    function handleFormSubmission(event) {
+        event.preventDefault(); // Prevent default form submission
+
+        // Use SweetAlert to confirm deletion
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // If confirmed, submit the form
+                event.target.submit();
+            }
+        });
+    }
+
+    // Add event listeners to all delete forms
+    document.querySelectorAll('.delete-form').forEach(form => {
+        form.addEventListener('submit', handleFormSubmission);
+    });
+</script>
+
+
+
