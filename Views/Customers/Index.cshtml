@@ -4,40 +4,38 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/AdminLTE/_Layout.cshtml";
 }
-
-<h1>Index</h1>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
+<div class="row">
+    <div class=col-sm-6>
+         <h3 class="text-uppercase">List Customer</h3>
+    </div>
+    <div class="col-sm-6">
+        <a asp-action="Create" class="btn btn-primary btn-sm float-right"><i class="fas fa-plus-circle">Add New</i></a>    
+    </div>
+</div>
+<div class="mt-2 card">
+    <div class="card-body">
+<table class="table table-hover table-bordered">
     <thead>
         <tr>
-            <th>
+            <th class="text-white">
                 @Html.DisplayNameFor(model => model.Code)
             </th>
-            <th>
+            <th class="text-white">
                 @Html.DisplayNameFor(model => model.Name)
             </th>
-            <th>
+            <th class="text-white">
                 @Html.DisplayNameFor(model => model.Gender)
             </th>
-            <th>
+            <th class="text-white">
                 @Html.DisplayNameFor(model => model.Dob)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Pob)
-            </th>
-            <th>
+            <th class="text-white">
                 @Html.DisplayNameFor(model => model.Phone)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Address)
-            </th>
-            <th>
+            <th class="text-white">
                 @Html.DisplayNameFor(model => model.CustomerType)
             </th>
-            <th></th>
+            <th class="text-white">Action</th>
         </tr>
     </thead>
     <tbody>
@@ -56,23 +54,49 @@
                 @Html.DisplayFor(modelItem => item.Dob)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Pob)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.Phone)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Address)
+                @Html.DisplayFor(modelItem => item.CustomerType.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CustomerType.Id)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-success btn-edit btn-sm rounded-circle"><i class="fas fa-edit"></i></a>
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info btn-sm rounded-circle"><i class="fas fa-eye"></i></a>
+                    <form asp-action="Delete" asp-route-id="@item.Id" class="d-inline-block delete-form">
+                                     <button type="submit" class="btn btn-danger btn-sm rounded-circle"><i class="fas fa-trash"></i></button>
+                        </form>
             </td>
         </tr>
 }
     </tbody>
 </table>
+    </div>
+</div>
+<script>
+    // Function to handle form submission with SweetAlert
+    function handleFormSubmission(event) {
+        event.preventDefault(); // Prevent default form submission
+
+        // Use SweetAlert to confirm deletion
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // If confirmed, submit the form
+                event.target.submit();
+            }
+        });
+    }
+
+    // Add event listeners to all delete forms
+    document.querySelectorAll('.delete-form').forEach(form => {
+        form.addEventListener('submit', handleFormSubmission);
+    });
+</script>
+

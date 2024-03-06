@@ -22,8 +22,9 @@ namespace Library.Models
         public string? Phone { get; set; }
 
         public string? Address { get; set; }
+
         [ForeignKey("CustomerType")]
         public int CustomerTypeId { get; set; }
-        public virtual CustomerType CustomerType { get; set; }
+        public virtual CustomerType? CustomerType { get; set; }
     }
 }

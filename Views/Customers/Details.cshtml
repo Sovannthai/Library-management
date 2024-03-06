@@ -4,64 +4,42 @@
     ViewData["Title"] = "Details";
     Layout = "~/Views/Shared/AdminLTE/_Layout.cshtml";
 }
+    <div class="card">  
+        <div class="card-header text-uppercase">
+            <h5>Customer Details</h5>
+        </div>
+            
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-2">Code</dt>
+                <dd class="col-sm-10">@Html.DisplayFor(model => model.Code)</dd>
 
-<h1>Details</h1>
+                <dt class="col-sm-2">Name</dt>
+                <dd class="col-sm-10">@Html.DisplayFor(model => model.Name)</dd>
 
-<div>
-    <h4>Customer</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Code)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Code)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Gender)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Gender)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Dob)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Dob)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Pob)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Pob)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Phone)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Phone)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Address)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Address)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CustomerType)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CustomerType.Id)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+                <dt class="col-sm-2">Gender</dt>
+                <dd class="col-sm-10">@Html.DisplayFor(model => model.Gender)</dd>
+
+                <dt class="col-sm-2">Date of Birth</dt>
+                <dd class="col-sm-10">@Html.DisplayFor(model => model.Dob)</dd>
+
+                <dt class="col-sm-2">Place of Birth</dt>
+                <dd class="col-sm-10">@Html.DisplayFor(model => model.Pob)</dd>
+
+                <dt class="col-sm-2">Phone</dt>
+                <dd class="col-sm-10">@Html.DisplayFor(model => model.Phone)</dd>
+
+                <dt class="col-sm-2">Address</dt>
+                <dd class="col-sm-10">@Html.DisplayFor(model => model.Address)</dd>
+
+                <dt class="col-sm-2">Customer Type</dt>
+                <dd class="col-sm-10">@Html.DisplayFor(model => model.CustomerType.Name)</dd>
+            </dl>
+        </div>
+        <div class="card-footer">
+          <div class="text-uppercase">
+        <a class="btn btn-secondary btn-sm float-right ml-1" asp-action="Index">Back</a>
+        <a class="btn btn-success btn-sm float-right btn-edit" asp-action="Edit" asp-route-id="@Model.Id"><i class="fas fa-edit"></i>Edit</a>
+    </div>
+        </div>
+    </div>

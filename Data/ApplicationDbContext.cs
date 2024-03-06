@@ -12,5 +12,6 @@ namespace EmpManagement.Data
         }
         public DbSet<CustomerType> CustomerType { get; set; }
         public DbSet<Customer> Customers { get; set; }
+        //public DbSet<Employee> Employees { get; set; }
     }
 }

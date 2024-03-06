@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using EmpManagement.Data;
@@ -48,17 +44,16 @@ namespace Library.Controllers
         // GET: Customers/Create
         public IActionResult Create()
         {
-			ViewData["CustomerTypeId"] = new SelectList(_context.CustomerType, "Id", "Name");
+			ViewData["CustomerTypes"] = new SelectList(_context.CustomerType, "Id", "Name");
 			return View();
 		}
 
-		// POST: Customers/Create
-		// To protect from overposting attacks, enable the specific properties you want to bind to.
-		// For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-		[HttpPost]
-		[ValidateAntiForgeryToken]
-		public async Task<IActionResult> Create([Bind("Code,Name,Gender,Dob,Pob,Phone,Address,CustomerTypeId")] Customer customer)
-		{
+        // POST: Customers/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        public async Task<IActionResult> Create([Bind("Code,Name,Gender,Dob,Pob,Phone,Address,CustomerTypeId")] Customer customer)
+        {
 			if (ModelState.IsValid)
 			{
 				_context.Add(customer);
@@ -66,16 +61,13 @@ namespace Library.Controllers
 				return RedirectToAction(nameof(Index));
 			}
 
-			// If ModelState is not valid, reload the CustomerType dropdown list
-			ViewData["CustomerTypeId"] = new SelectList(_context.CustomerType, "Id", "Name", customer.CustomerTypeId);
+			ViewData["CustomerTypes"] = new SelectList(_context.CustomerType, "Id", "Name", customer.CustomerTypeId);
 
-			// Return the view with the same customer object to display validation errors
 			return View(customer);
 		}
 
-
-		// GET: Customers/Edit/5
-		public async Task<IActionResult> Edit(int? id)
+        // GET: Customers/Edit/5
+        public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.Customers == null)
             {
@@ -87,8 +79,8 @@ namespace Library.Controllers
             {
                 return NotFound();
             }
-            ViewData["CustomerTypeId"] = new SelectList(_context.CustomerType, "Id", "Id", customer.CustomerTypeId);
-            return View(customer);
+			ViewData["CustomerTypes"] = new SelectList(_context.CustomerType, "Id", "Name", customer.CustomerTypeId);
+			return View(customer);
         }
 
         // POST: Customers/Edit/5
