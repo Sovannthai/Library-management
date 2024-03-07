@@ -16,62 +16,92 @@
 	  </div>
 	  <nav class="mt-2">
 		<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-	<li class="nav-item">
-		<a class="nav-link @(ViewContext.RouteData.Values["Controller"].ToString() == "Home" && ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")" asp-controller="Home" asp-action="Index">
-			<i class="nav-icon fas fa-tachometer-alt"></i>
-			<p>
-				Dashboard
-			</p>
-		</a>
-	</li>
-	<li class="nav-item menu-open">
-		<a class="nav-link">
-			<i class="nav-icon fas fa-users"></i>
-			<p>
-				Customer
-				<i class="right fas fa-angle-left"></i>
-			</p>
-		</a>
-		<ul class="nav nav-treeview">
 			<li class="nav-item">
-				<a class="nav-link @(ViewContext.RouteData.Values["Controller"].ToString() == "Customers" && ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")" asp-controller="Customers" asp-action="Index">
-					<i class="fas fa-user nav-icon d-none"></i>
-					<p class="ml-4">Customer List</p>
+				<a class="nav-link @(ViewContext.RouteData.Values["Controller"].ToString() == "Home" && ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")" asp-controller="Home" asp-action="Index">
+					<i class="nav-icon fas fa-tachometer-alt"></i>
+					<p>
+						Dashboard
+					</p>
 				</a>
 			</li>
-			<li class="nav-item">
-				<a class="nav-link @(ViewContext.RouteData.Values["Controller"].ToString() == "CustomerTypes" && ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")" asp-controller="CustomerTypes" asp-action="Index">
-					<i class="far fa-circle nav-icon d-none"></i>
-					<p class="ml-4">Customer Type</p>
+			<li class="nav-item menu-open">
+				<a class="nav-link">
+					<i class="nav-icon fas fa-user-friends"></i>
+					<p>
+						Librarian
+						<i class="right fas fa-angle-left"></i>
+					</p>
 				</a>
+				<ul class="nav nav-treeview">
+					<li class="nav-item">
+						<a class="nav-link">
+							<i class="fas fa-user nav-icon d-none"></i>
+							<p class="ml-4">Librarian List</p>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link >
+							<i class="far fa-circle nav-icon d-none"></i>
+							<p class="ml-4">Role</p>
+						</a>
+					</li>
+				</ul>
+			</li>
+			<li class="nav-item menu-open">
+				<a class="nav-link">
+					<i class="nav-icon fas fa-users"></i>
+					<p>
+						Customers
+						<i class="right fas fa-angle-left"></i>
+					</p>
+				</a>
+				<ul class="nav nav-treeview">
+					<li class="nav-item">
+						<a class="nav-link @(ViewContext.RouteData.Values["Controller"].ToString() == "Customers" && ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")" asp-controller="Customers" asp-action="Index">
+							<i class="fas fa-user nav-icon d-none"></i>
+							<p class="ml-4">Customer List</p>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link @(ViewContext.RouteData.Values["Controller"].ToString() == "CustomerTypes" && ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")" asp-controller="CustomerTypes" asp-action="Index">
+							<i class="far fa-circle nav-icon d-none"></i>
+							<p class="ml-4">Customer Type</p>
+						</a>
+					</li
+				</ul>
 			</li>
 		</ul>
-	</li>
-	<li class="nav-item menu-open">
-		<a class="nav-link">
-			<i class="nav-icon fas fa-users"></i>
-			<p>
-				Librarian
-				<i class="right fas fa-angle-left"></i>
-			</p>
-		</a>
-		<ul class="nav nav-treeview">
 			<li class="nav-item">
-				<a class="nav-link>
-					<i class="fas fa-user nav-icon d-none"></i>
-					<p class="ml-4">Librarian List</p>
+				<a class="nav-link">
+					<i class="nav-icon fas fa-book-reader"></i>
+					<p>
+						Catalogue 
+					</p>
 				</a>
 			</li>
-			<li class="nav-item">
-				<a class="nav-link >
-					<i class="far fa-circle nav-icon d-none"></i>
-					<p class="ml-4">Role</p>
+			<li class="nav-item menu-open">
+				<a class="nav-link">
+					<i class="nav-icon fas fa-sync-alt"></i>
+					<p>
+						Borrow
+						<i class="right fas fa-angle-left"></i>
+					</p>
 				</a>
+				<ul class="nav nav-treeview">
+					<li class="nav-item">
+						<a class="nav-link">
+							<i class="fas fa-user nav-icon d-none"></i>
+							<p class="ml-4">Borrow List</p>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link">
+							<i class="far fa-circle nav-icon d-none"></i>
+							<p class="ml-4">Book Refund</p>
+						</a>
+					</li
+				</ul>
 			</li>
-		</ul>
-	</li>
-</ul>
-
 	  </nav>
 	  <!-- /.sidebar-menu -->
 	</div>
