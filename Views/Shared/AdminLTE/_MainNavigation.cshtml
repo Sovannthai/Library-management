@@ -26,6 +26,29 @@
 			</li>
 			<li class="nav-item menu-open">
 				<a class="nav-link">
+					<i class="nav-icon fas fa-cubes	"></i>
+					<p>
+						Product
+						<i class="right fas fa-angle-left"></i>
+					</p>
+				</a>
+				<ul class="nav nav-treeview">
+					<li class="nav-item">
+						<a class="nav-link @(ViewContext.RouteData.Values["Controller"].ToString() == "Products" && ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")" asp-controller="Products" asp-action="Index">
+							<i class="fas fa-user nav-icon d-none"></i>
+							<p class="ml-4">Product List</p>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link @(ViewContext.RouteData.Values["Controller"].ToString() == "Categories" && ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")" asp-controller="Categories" asp-action="Index">
+							<i class="far fa-circle nav-icon d-none"></i>
+							<p class="ml-4">Category</p>
+						</a>
+					</li>
+				</ul>
+			</li>
+			<li class="nav-item menu-open">
+				<a class="nav-link">
 					<i class="nav-icon fas fa-user-friends"></i>
 					<p>
 						Librarian
@@ -47,6 +70,29 @@
 					</li>
 				</ul>
 			</li>
+			<li class="nav-item menu-open">
+				<a class="nav-link">
+					<i class="nav-icon fas fa-book-reader"></i>
+					<p>
+						Catelog & Books
+						<i class="right fas fa-angle-left"></i>
+					</p>
+				</a>
+				<ul class="nav nav-treeview">
+					<li class="nav-item ">
+						<a class="nav-link @(ViewContext.RouteData.Values["Controller"].ToString() == "Books" && ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")" asp-controller="Books" asp-action="Index">
+							<i class="fas fa-user nav-icon d-none"></i>
+							<p class="ml-4">Book List</p>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link @(ViewContext.RouteData.Values["Controller"].ToString() == "Catelogs" && ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")" asp-controller="Catelogs" asp-action="Index">
+							<i class="far fa-circle nav-icon d-none"></i>
+							<p class="ml-4">Catelog</p>
+						</a>
+					</li>
+				</ul>
+			</li>	
 			<li class="nav-item menu-open">
 				<a class="nav-link">
 					<i class="nav-icon fas fa-users"></i>
@@ -71,14 +117,6 @@
 				</ul>
 			</li>
 		</ul>
-			<li class="nav-item">
-				<a class="nav-link">
-					<i class="nav-icon fas fa-book-reader"></i>
-					<p>
-						Catalogue 
-					</p>
-				</a>
-			</li>
 			<li class="nav-item menu-open">
 				<a class="nav-link">
 					<i class="nav-icon fas fa-sync-alt"></i>

@@ -1,0 +1,38 @@
+﻿@model Library.Models.Book
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/AdminLTE/_Layout.cshtml";
+}
+<div class="card">
+    <div class="card-header">Create Book</div>
+    <div class="card-body">
+        <form asp-action="Create" class="text-uppercase">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="row">
+                <div class="form-group col-sm-6">
+                        <label asp-for="BookCode" class="control-label"></label>
+                        <input asp-for="BookCode" class="form-control" />
+                        <span asp-validation-for="BookCode" class="text-danger"></span>
+                </div>
+                <div class="form-group col-sm-6">
+                    <label asp-for="CatelogId" class="control-label">Select Catelog</label>
+                    <select asp-for="CatelogId" class="form-control select-to" 
+                    asp-items="@ViewBag.CatelogId"></select>
+                </div>
+                <div class="form-group col-sm-12">
+                    <label asp-for="Description" class="control-label"></label>
+                    <textarea asp-for="Description" class="form-control"></textarea>
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary btn-sm float-right ml-1" />
+                <a asp-action="Index" class="btn btn-secondary btn-sm float-right">Close</a>
+            </div>
+        </form>
+    </div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

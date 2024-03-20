@@ -1,0 +1,42 @@
+﻿@model Library.Models.Catelog
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/AdminLTE/_Layout.cshtml";
+}
+    <div class="card">  
+        <div class="card-header text-uppercase">
+            <h5>Catelog Details</h5>
+        </div>
+            
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-2">CatalogCode</dt>
+                <dd class="col-sm-10">@Html.DisplayFor(model => model.CatalogCode)</dd>
+
+                <dt class="col-sm-2">CatalogName</dt>
+                <dd class="col-sm-10">@Html.DisplayFor(model => model.CatalogName)</dd>
+
+                <dt class="col-sm-2">ISBN</dt>
+                <dd class="col-sm-10">@Html.DisplayFor(model => model.ISBN)</dd>
+
+                <dt class="col-sm-2">AuthorName</dt>
+                <dd class="col-sm-10">@Html.DisplayFor(model => model.AuthorName)</dd>
+
+                <dt class="col-sm-2">Publisher</dt>
+                <dd class="col-sm-10">@Html.DisplayFor(model => model.Publisher)</dd>
+
+                <dt class="col-sm-2">PublicYear</dt>
+                <dd class="col-sm-10">@Html.DisplayFor(model => model.PublicYear)</dd>
+
+                <dt class="col-sm-2">PublicEdition</dt>
+                <dd class="col-sm-10">@Html.DisplayFor(model => model.PublicEdition)</dd>
+            </dl>
+        </div>
+        <div class="card-footer">
+          <div class="text-uppercase">
+        <a class="btn btn-secondary btn-sm float-right ml-1" asp-action="Index">Back</a>
+        <a class="btn btn-success btn-sm float-right btn-edit" asp-action="Edit" asp-route-id="@Model.Id"><i class="fas fa-edit"></i>Edit</a>
+    </div>
+        </div>
+    </div>
