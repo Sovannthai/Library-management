@@ -12,10 +12,9 @@ namespace EmpManagement.Controllers
         {
             _logger = logger;
         }
-
         public IActionResult Index()
         {
-            return View();
+            return View("Login");
         }
 
         public IActionResult Privacy()
