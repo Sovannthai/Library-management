@@ -1,9 +1,11 @@
 ﻿using EmpManagement.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
 namespace EmpManagement.Controllers
 {
+    //[Authorize]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -14,7 +16,7 @@ namespace EmpManagement.Controllers
         }
         public IActionResult Index()
         {
-            return View("Login");
+            return View();
         }
 
         public IActionResult Privacy()

@@ -13,6 +13,14 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ApplicationDbContext>();
+builder.Services.ConfigureApplicationCookie(option =>
+{
+    option.LoginPath = "/identity/Account/login";
+});
+builder.Services.ConfigureApplicationCookie(option =>
+{
+    option.LogoutPath = "/identity/Account/Logout";
+});
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 

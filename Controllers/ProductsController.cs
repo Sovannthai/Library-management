@@ -18,13 +18,34 @@ namespace Library.Controllers
         {
             _context = context;
         }
-
-        // GET: Products
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchString, int? categoryId)
         {
-            var applicationDbContext = _context.Products.Include(p => p.Category);
+            ViewData["CurrentFilter"] = searchString;
+            ViewData["CategoryId"] = categoryId;
+
+            var products = from p in _context.Products
+                           select p;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                products = products.Where(p => p.Name.Contains(searchString) || p.Id.ToString().Contains(searchString));
+            }
+
+            // Filter by category
+            if (categoryId.HasValue)
+            {
+                products = products.Where(p => p.CategoryId == categoryId.Value);
+            }
+
+            // Retrieve categories
+            ViewBag.Categories = await _context.Categories.ToListAsync();
+
+            var applicationDbContext = products.Include(p => p.Category);
             return View(await applicationDbContext.ToListAsync());
         }
+
+
+
 
         // GET: Products/Details/5
         public async Task<IActionResult> Details(int? id)

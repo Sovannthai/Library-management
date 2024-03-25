@@ -12,78 +12,103 @@
         <a asp-action="Create" class="btn btn-primary btn-sm float-right"><i class="fas fa-plus-circle">Add New</i></a>    
     </div>
 </div>
-<form action="" class="mb-2">
-        <div class="row">
-            <div class="col-sm-4">
-
-            </div>
-            <div class="col-sm-6 ml-2">
-                <input type="search" class="form-control mt-3 " name="search" value=""/>
-            </div>
-            <div class="col-sm-1 float-right">
-                <button type="submit" class="btn btn-success mt-3">Search</button>
-            </div>
+<div class="row">
+<form action="" class="mb-2 col-6">
+    <div class="row">
+        <div class="form-group col-sm-6 ml-2">
+        <label>Search Product</label>
+            <input type="search" class="form-control" name="searchString" value="@ViewBag.SearchString" />
         </div>
-    </form>
+        <div class="col-sm-1 float-right">
+            <button type="submit" class="btn btn-success" style="margin-top:32px;">Search</button>
+        </div>
+    </div>
+</form>
+<form asp-action="Index" asp-controller="Products" method="get"class="col-6">
+    <div class="row">
+        <div class="form-group col-sm-8">
+            <label for="categoryId">Select Category:</label>
+            <select class="form-control" id="categoryId" name="categoryId">
+                <option value="">All Categories</option>
+                @foreach (var category in ViewBag.Categories)
+                {
+                            <option value="@category.CategoryId">@category.CategoryName</option>
+                }
+            </select>
+        </div>
+        <div class="col-sm-3"​​ style="margin-top:31px;">
+            <button type="submit" class="btn btn-primary">Filter</button>
+        </div​​>
+    </div>
+</form>
+</div>
 <div class="card">
     <div class="card-body">
-        <table class="table table-bordered table-hover">
-        <thead>
-            <tr>
-                <th class="text-white">
+        @if (Model.Any())
+        {
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th class="text-white">
                             @Html.DisplayNameFor(model => model.Name)
-                </th>
-                <th class="text-white">
+                        </th>
+                        <th class="text-white">
                             @Html.DisplayNameFor(model => model.Description)
-                </th>
-                <th class="text-white">
+                        </th>
+                        <th class="text-white">
                             @Html.DisplayNameFor(model => model.Quantity)
-                </th>
-                <th class="text-white">
+                        </th>
+                        <th class="text-white">
                             @Html.DisplayNameFor(model => model.Price)
-                </th>
-                <th class="text-white">
+                        </th>
+                        <th class="text-white">
                             @Html.DisplayNameFor(model => model.Discount)
-                </th>
-                <th class="text-white">
+                        </th>
+                        <th class="text-white">
                             @Html.DisplayNameFor(model => model.Category)
-                </th>
-                <th class="text-white">Action</th>
-            </tr>
-        </thead>
-        <tbody>
+                        </th>
+                        <th class="text-white">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
                     @foreach (var item in Model)
                     {
-                <tr>
-                    <td>
+                        <tr>
+                            <td>
                                 @Html.DisplayFor(modelItem => item.Name)
-                    </td>
-                    <td>
+                            </td>
+                            <td>
                                 @Html.DisplayFor(modelItem => item.Description)
-                    </td>
-                    <td>
+                            </td>
+                            <td>
                                 @Html.DisplayFor(modelItem => item.Quantity)
-                    </td>
-                    <td>
+                            </td>
+                            <td>
                                 @Html.DisplayFor(modelItem => item.Price)
-                    </td>
-                    <td>
+                            </td>
+                            <td>
                                 @Html.DisplayFor(modelItem => item.Discount)
-                    </td>
-                    <td>
-                                @Html.DisplayFor(modelItem => item.Category.Name)
-                    </td>
-                    <td>
-                      <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-success btn-edit btn-sm rounded-circle"><i class="fas fa-edit"></i></a>
-                          <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info btn-sm rounded-circle"><i class="fas fa-eye"></i></a>
-                      <form asp-action="Delete" asp-route-id="@item.Id" class="d-inline-block delete-form">
-                         <button type="submit" class="btn btn-danger btn-sm rounded-circle"><i class="fas fa-trash"></i></button>
-                      </form>
-                    </td>
-                </tr>
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Category.CategoryName)
+                            </td>
+                            <td>
+                                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-success btn-edit btn-sm rounded-circle"><i class="fas fa-edit"></i></a>
+                                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info btn-sm rounded-circle"><i class="fas fa-eye"></i></a>
+                                <form asp-action="Delete" asp-route-id="@item.Id" class="d-inline-block delete-form">
+                                    <button type="submit" class="btn btn-danger btn-sm rounded-circle"><i class="fas fa-trash"></i></button>
+                                </form>
+                            </td>
+                        </tr>
                     }
-        </tbody>
-    </table>
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <div>No records found.</div>
+        }
+    </div>
     </div>
 </div>
 <script>
