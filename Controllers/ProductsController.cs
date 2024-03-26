@@ -21,7 +21,9 @@ namespace Library.Controllers
         public async Task<IActionResult> Index(string searchString, int? categoryId)
         {
             ViewData["CurrentFilter"] = searchString;
-            ViewData["CategoryId"] = categoryId;
+            ViewBag.CategoryId = categoryId;
+
+            ViewBag.SearchString = searchString;    
 
             var products = from p in _context.Products
                            select p;
@@ -69,7 +71,7 @@ namespace Library.Controllers
         // GET: Products/Create
         public IActionResult Create()
         {
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Name");
+            ViewBag.Categories = new SelectList(_context.Categories, "CategoryId", "CategoryName");
             return View();
         }
 
@@ -103,7 +105,7 @@ namespace Library.Controllers
             {
                 return NotFound();
             }
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Name", product.CategoryId);
+            ViewBag.Categories = new SelectList(_context.Categories, "CategoryId", "CategoryName");
             return View(product);
         }
 
